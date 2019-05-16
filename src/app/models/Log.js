@@ -3,13 +3,20 @@ const mongoose = require('mongoose');
 const logSchema = new mongoose.Schema(
   {
     tmp: {
-      type: Number
+      type: Number,
+      required: true
     },
     fan: {
-      type: Number
+      type: Number,
+      required: true
     },
     device: {
-      type: Number
+      type: Number,
+      required: true
+    },
+    timestamp: {
+      type: Date,
+      required: true
     }
   },
   {
