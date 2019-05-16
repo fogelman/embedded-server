@@ -2,19 +2,20 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const path = require('path');
+require('dotenv').config({ path: path.resolve('..', '.env') });
 
 const databaseConfig = require('./config/database');
 
 class App {
   constructor() {
     this.express = express();
-    // this.database();
+    this.database();
     this.middlewares();
     this.routes();
   }
 
   database() {
-    mongoose.connect(process.env.MONGO_URL || databaseConfig.uri, {
+    mongoose.connect(process.env.MONGO_URI || databaseConfig.uri, {
       useCreateIndex: true,
       useNewUrlParser: true
     });
