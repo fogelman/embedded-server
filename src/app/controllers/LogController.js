@@ -5,7 +5,6 @@ class Logger {
     var { tmp, fan, device } = req.query;
     if (tmp && fan && device) {
       const log = await Log.create({ tmp, fan, device });
-      console.log(req.body);
       return res.json(log);
     }
     return res.status(301).send('error');

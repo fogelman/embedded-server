@@ -3,7 +3,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const path = require('path');
 
-require('dotenv').config({ path: path.resolve('..', '.env') });
+require('dotenv').config();
 
 const databaseConfig = require('./config/database');
 
@@ -16,10 +16,12 @@ class App {
   }
 
   database() {
-    mongoose.connect(process.env.MONGO_URI || databaseConfig.uri, {
-      useCreateIndex: true,
-      useNewUrlParser: true
-    });
+    mongoose
+      .connect(process.env.MONGO_URI || databaseConfig.uri, {
+        useCreateIndex: true,
+        useNewUrlParser: true
+      })
+      .catch(err => console.log(err));
   }
 
   middlewares() {

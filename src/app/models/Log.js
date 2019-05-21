@@ -16,7 +16,7 @@ const logSchema = new mongoose.Schema(
     },
     timestamp: {
       type: Number,
-      required: true
+      required: false
     }
   },
   {
