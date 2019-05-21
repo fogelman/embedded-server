@@ -2,7 +2,7 @@ const Log = require('../models/Log');
 
 class Logger {
   async store(req, res) {
-    var { tmp, fan, device } = req.body;
+    var { tmp, fan, device } = req.query;
     if (tmp && fan && device) {
       const log = await Log.create({ tmp, fan, device });
       console.log(req.body);
@@ -15,6 +15,11 @@ class Logger {
     const log = await Log.find({});
     return res.status(200).json(log);
   }
+
+  // async assa(req, res) {
+  //   const log = await Log.drop({});
+  //   return res.status(200).json(log);
+  // }
 }
 
 module.exports = new Logger();
