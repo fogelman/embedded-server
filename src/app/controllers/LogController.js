@@ -3,14 +3,17 @@ const Log = require('../models/Log');
 class Logger {
   async store(req, res) {
     var { tmp, fan, device, timestamp } = req.body;
-    if (tmp && fan && device && timestamp) {
+    if (
+      tmp != undefined &&
+      fan != undefined &&
+      device != undefined &&
+      timestamp != undefined
+    ) {
       const log = await Log.create({ tmp, fan, device, timestamp });
       return res.json(log);
     }
     console.log();
-    return res
-      .status(301)
-      .send(` error ${tmp}, ${fan}, ${device}, ${timestamp}`);
+    return res.status(301).send(` error on request`);
   }
 
   async show(req, res) {
