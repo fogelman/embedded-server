@@ -7,6 +7,7 @@ class Logger {
       const log = await Log.create({ tmp, fan, device, timestamp });
       return res.json(log);
     }
+    console.log(`${tmp}, ${fan}, ${device}, ${timestamp}`);
     return res.status(301).send('error');
   }
 
