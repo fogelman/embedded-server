@@ -2,7 +2,7 @@ const Log = require('../models/Log');
 
 class Logger {
   async store(req, res) {
-    var { tmp, fan, device } = req.body;
+    var { tmp, fan, device, timestamp } = req.body;
     if (tmp && fan && device && timestamp) {
       const log = await Log.create({ tmp, fan, device, timestamp });
       return res.json(log);
